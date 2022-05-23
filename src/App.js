@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import ConfirmEnrollment from './Pages/Enrollment/ConfirmEnrollment';
 import NotFound from './Pages/Shared/NotFound';
 import MyProjects from './Pages/Projects/MyProjects';
+import Users from './Pages/User/Users';
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
         <Route path='/enrollment/:id' element={
           <RequireAuth>
             <Enrollment />
+          </RequireAuth>
+        }></Route>
+        <Route path='/allUser' element={
+          <RequireAuth>
+            <Users />
           </RequireAuth>
         }></Route>
         <Route path='/myProject' element={
