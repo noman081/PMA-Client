@@ -8,7 +8,7 @@ import MyProjectRow from './MyProjectRow';
 const MyProjects = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
-    const url = `http://localhost:5000/enroll/${email}`;
+    const url = `https://nameless-sea-82062.herokuapp.com/enroll/${email}`;
     const { data: projects, isLoading } = useQuery('myProject', () => fetch(url).then(res => res.json()));
     if (isLoading) {
         return <Loading />

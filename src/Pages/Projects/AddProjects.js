@@ -12,7 +12,7 @@ const AddProjects = () => {
             state,
             member
         }
-        fetch('http://localhost:5000/project', {
+        fetch('https://nameless-sea-82062.herokuapp.com/project', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

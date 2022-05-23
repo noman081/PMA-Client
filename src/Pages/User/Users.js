@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
 const Users = () => {
-    const { data: users, isLoading, refetch } = useQuery('projects', () => fetch('http://localhost:5000/user').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('projects', () => fetch('https://nameless-sea-82062.herokuapp.com/user').then(res => res.json()));
     if (isLoading) {
         return <Loading />
     }

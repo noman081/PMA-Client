@@ -3,7 +3,7 @@ const useSupervisor = user => {
     const [supervisor, setSupervisor] = useState(false);
     useEffect(() => {
         const email = user?.email;
-        const url = `http://localhost:5000/supervisor/${email}`;
+        const url = `https://nameless-sea-82062.herokuapp.com/supervisor/${email}`;
         if (email) {
             fetch(url)
                 .then(res => res.json())

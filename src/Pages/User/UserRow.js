@@ -6,7 +6,7 @@ const UserRow = ({ index, user, refetch }) => {
     const handleDelete = () => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://nameless-sea-82062.herokuapp.com/user/${email}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -3,7 +3,7 @@ import React from 'react';
 const EnrollmentRow = ({ index, project, refetch }) => {
     const { _id, name, state, member } = project;
     const handleAccept = () => {
-        fetch(`http://localhost:5000/project/accept/${_id}`, {
+        fetch(`https://nameless-sea-82062.herokuapp.com/project/accept/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -17,7 +17,7 @@ const EnrollmentRow = ({ index, project, refetch }) => {
 
     }
     const handleComplete = () => {
-        fetch(`http://localhost:5000/project/complete/${_id}`, {
+        fetch(`https://nameless-sea-82062.herokuapp.com/project/complete/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

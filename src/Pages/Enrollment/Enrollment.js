@@ -10,7 +10,7 @@ const Enrollment = () => {
     const [user] = useAuthState(auth);
     const { id } = useParams();
     const navigate = useNavigate();
-    const url = `http://localhost:5000/project/${id}`;
+    const url = `https://nameless-sea-82062.herokuapp.com/project/${id}`;
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { data: project, isLoading } = useQuery('project', () => fetch(url).then(res => res.json()));
     const onSubmit = data => {
@@ -19,7 +19,7 @@ const Enrollment = () => {
             project: project?.name,
             state: 'Open'
         };
-        fetch(`http://localhost:5000/enroll/${project._id}`, {
+        fetch(`https://nameless-sea-82062.herokuapp.com/enroll/${project._id}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
