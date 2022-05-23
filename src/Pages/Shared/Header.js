@@ -19,7 +19,7 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-sky-400">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -39,7 +39,7 @@ const Header = () => {
                             : <Link to='/login'>Login</Link>}</li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">PMA</Link>
             </div>
             <div className="navbar-end">
                 <label tabIndex="1" htmlFor="dashboard-sidebar" className="btn btn-ghost lg:hidden">
@@ -48,13 +48,12 @@ const Header = () => {
             </div>
             <div className="navbar-end mr-10 hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
+                    {
+                        user && <li><Link to='/addProject'>AddProjects</Link></li>
+                    }
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/about'>About</Link></li>
                     <li><Link to='/review'>Reviews</Link></li>
                     <li><Link to='/contact'>Contact</Link></li>
-                    {
-                        user && <li><Link to='/dashboard'>Dashboard</Link></li>
-                    }
                     <li>{user ?
                         <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>
                         : <Link to='/login'>Login</Link>}</li>
