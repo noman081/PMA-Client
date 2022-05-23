@@ -1,16 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-import EnrollmentRow from './EnrollmentRow';
+import MyProjectRow from './MyProjectRow';
 
-const ConfirmEnrollment = () => {
-    const { data: projects, isLoading, refetch } = useQuery('projects', () => fetch('http://localhost:5000/project').then(res => res.json()));
+const MyProjects = () => {
+    const [user] = useAuthState(auth);
+    const email = user?.email;
+    const url = `http://localhost:5000/enroll/${email}`;
+    const { data: projects, isLoading } = useQuery('myProject', () => fetch(url).then(res => res.json()));
     if (isLoading) {
         return <Loading />
     }
     return (
         <div className='px-12'>
-            <h1 className="text-3xl text-center mt-6">Enrollment State</h1>
+            <h1 className="text-3xl text-center my-6">My Project</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
@@ -18,13 +23,11 @@ const ConfirmEnrollment = () => {
                             <th></th>
                             <th>Name</th>
                             <th>State</th>
-                            <th>Member</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            projects.map((project, index) => <EnrollmentRow key={project._id} index={index} project={project} refetch={refetch} />)
+                            projects.map((project, index) => <MyProjectRow key={project._id} index={index} p={project} />)
                         }
                     </tbody>
                 </table>
@@ -33,4 +36,4 @@ const ConfirmEnrollment = () => {
     );
 };
 
-export default ConfirmEnrollment;
+export default MyProjects;

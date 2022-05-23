@@ -54,7 +54,7 @@ const Header = () => {
                     {
                         user && <li><Link to='/confirmEnrollment'>Confrim Enrollment</Link></li>
                     }
-                    <li><Link to='/review'>Reviews</Link></li>
+                    <li><Link to='/myProject'>My Project</Link></li>
                     <li><Link to='/contact'>Contact</Link></li>
                     <li className='my-auto'>{user ?
                         <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>
