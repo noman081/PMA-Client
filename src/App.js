@@ -7,6 +7,9 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import AddProjects from './Pages/Projects/AddProjects';
 import Home from './Pages/Home/Home';
 import Enrollment from './Pages/Enrollment/Enrollment';
+import { ToastContainer } from 'react-toastify';
+import ConfirmEnrollment from './Pages/Enrollment/ConfirmEnrollment';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -21,13 +24,21 @@ function App() {
             <AddProjects />
           </RequireAuth>
         }></Route>
+        <Route path='/confirmEnrollment' element={
+          <RequireAuth>
+            <ConfirmEnrollment />
+          </RequireAuth>
+        }></Route>
         <Route path='/enrollment/:id' element={
           <RequireAuth>
             <Enrollment />
           </RequireAuth>
         }></Route>
 
+        <Route path='*' element={<NotFound />} />
       </Routes>
+
+      <ToastContainer />
     </div>
   );
 }

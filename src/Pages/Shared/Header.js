@@ -28,7 +28,6 @@ const Header = () => {
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/about'>About</Link></li>
-                        <li><Link to='/appoinment'>Appoinment</Link></li>
                         <li><Link to='/review'>Reviews</Link></li>
                         <li><Link to='/contact'>Contact Us</Link></li>
                         {
@@ -48,13 +47,16 @@ const Header = () => {
             </div>
             <div className="navbar-end mr-10 hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    {
-                        user && <li><Link to='/addProject'>AddProjects</Link></li>
-                    }
                     <li><Link to='/'>Home</Link></li>
+                    {
+                        user && <li><Link to='/addProject'>Add Projects</Link></li>
+                    }
+                    {
+                        user && <li><Link to='/confirmEnrollment'>Confrim Enrollment</Link></li>
+                    }
                     <li><Link to='/review'>Reviews</Link></li>
                     <li><Link to='/contact'>Contact</Link></li>
-                    <li>{user ?
+                    <li className='my-auto'>{user ?
                         <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>
                         : <Link to='/login'>Login</Link>}</li>
                 </ul>
