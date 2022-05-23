@@ -4,19 +4,17 @@ import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from './Loading';
+import useSupervisor from '../../Hooks/useSupervisor';
 
 const Header = () => {
     const [user, loading] = useAuthState(auth);
     if (loading) {
         <Loading />
     }
-    if (user) {
-        if (!user.photoURL) {
-            user.photoURL = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png';
-        };
-    }
+    const [supervisor, setSupervisor] = useSupervisor(user);
     const logOut = () => {
         signOut(auth);
+        setSupervisor(false);
     }
     return (
         <div className="navbar bg-sky-400">
@@ -49,12 +47,15 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     {
-                        user && <li><Link to='/addProject'>Add Projects</Link></li>
+                        supervisor && <>
+                            <li><Link to='/addProject'>Add Projects</Link></li>
+                            <li><Link to='/confirmEnrollment'>Confrim Enrollment</Link></li>
+                            <li><Link to='/allUser'>See all user</Link></li>
+                        </>
                     }
                     {
-                        user && <li><Link to='/confirmEnrollment'>Confrim Enrollment</Link></li>
+                        (user && !supervisor) && <li><Link to='/myProject'>My Project</Link></li>
                     }
-                    <li><Link to='/myProject'>My Project</Link></li>
                     <li><Link to='/contact'>Contact</Link></li>
                     <li className='my-auto'>{user ?
                         <button className="btn btn-ghost" onClick={logOut}>Sign Out</button>

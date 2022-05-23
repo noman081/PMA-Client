@@ -16,8 +16,8 @@ const MyProjects = () => {
     return (
         <div className='px-12'>
             <h1 className="text-3xl text-center my-6">My Project</h1>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

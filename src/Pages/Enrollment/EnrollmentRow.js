@@ -38,13 +38,13 @@ const EnrollmentRow = ({ index, project, refetch }) => {
             <td>{member}</td>
             <td>
                 {
-                    state === 'Open' && <button onClick={handleAccept} disabled={!(member >= 3)} class="btn btn-xs btn-success">Accept Project</button>
+                    state === 'Open' && <button onClick={handleAccept} disabled={!(member >= 3)} className="btn btn-xs btn-success">Accept Project</button>
                 }
                 {
-                    state === 'In progress' && <button onClick={handleComplete} class="btn btn-xs">Declare Complete</button>
+                    state === 'In progress' && <button onClick={handleComplete} className="btn btn-xs">Declare Complete</button>
                 }
                 {
-                    state === 'Completed' && <p class="text-success">Successfully Completed</p>
+                    state === 'Completed' && <p className="text-success">Successfully Completed</p>
                 }
 
             </td>
