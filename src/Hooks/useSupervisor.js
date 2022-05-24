@@ -8,7 +8,6 @@ const useSupervisor = user => {
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data.supervisor);
                     setSupervisor(data.supervisor);
                 })
         }

@@ -34,7 +34,6 @@ const Login = () => {
         signInError = (error.message || gError.message);
     };
     const onSubmit = data => {
-        console.log(data);
         signInWithEmailAndPassword(data.email, data.password)
         reset();
     };
